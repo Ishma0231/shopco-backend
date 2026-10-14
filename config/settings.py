@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "192.168.29.204",
+    "api.shopco.space",
 ]
 
 render_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -43,6 +44,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://192.168.29.204:3000",
+     "https://shopco.space",
+    "https://www.shopco.space",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
