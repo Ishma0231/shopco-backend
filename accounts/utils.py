@@ -4,11 +4,15 @@ import redis
 from decouple import config
 import json
 
-redis_client=redis.Redis(
-    host=config("REDIS_HOST"),
-    port=config("REDIS_PORT",cast=int),
-    db=config("REDIS_DB",cast=int),
-    decode_responses=config("REDIS_DECODE_RESPONSE",cast=bool)
+# redis_client=redis.Redis(
+#     host=config("REDIS_HOST"),
+#     port=config("REDIS_PORT",cast=int),
+#     db=config("REDIS_DB",cast=int),
+#     decode_responses=config("REDIS_DECODE_RESPONSE",cast=bool)
+# )
+redis_client = redis.Redis.from_url(
+    config("CELERY_BROKER_URL"),
+    decode_responses=config("REDIS_DECODE_RESPONSE", cast=bool),
 )
 
 def generate_otp():
