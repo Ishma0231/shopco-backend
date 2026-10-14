@@ -3,6 +3,7 @@ import random
 import redis
 from decouple import config
 import json
+import certifi
 
 # redis_client=redis.Redis(
 #     host=config("REDIS_HOST"),
@@ -10,11 +11,13 @@ import json
 #     db=config("REDIS_DB",cast=int),
 #     decode_responses=config("REDIS_DECODE_RESPONSE",cast=bool)
 # )
+
+
 redis_client = redis.Redis.from_url(
     config("CELERY_BROKER_URL"),
     decode_responses=config("REDIS_DECODE_RESPONSE", cast=bool),
+    ssl_ca_certs=certifi.where(),
 )
-
 def generate_otp():
     return str(random.randint(100000,999999))
 
