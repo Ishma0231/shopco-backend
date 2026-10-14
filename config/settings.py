@@ -198,9 +198,5 @@ EMAIL_HOST_USER=config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD=config("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS=config("EMAIL_USE_TLS",cast=bool)
 
-CELERY_BROKER_URL=(
-    f"redis://{config("REDIS_HOST")}:"
-    f"{config("REDIS_PORT")}/"
-    f"{config("REDIS_DB")}"
-)
+CELERY_BROKER_URL = config("CELERY_BROKER_URL")
 
